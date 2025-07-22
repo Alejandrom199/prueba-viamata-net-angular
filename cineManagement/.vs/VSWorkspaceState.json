@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\cineManagementAPI",
+    "\\cineManagementAPI\\Controllers",
+    "\\cineManagementDatabaseFirst",
+    "\\cineManagementDatabaseFirst\\Repository",
+    "\\cineManagementDatabaseFirst\\Repository\\impl"
+  ],
+  "SelectedNode": "\\cineManagement.sln",
+  "PreviewInSolutionExplorer": false
+}
