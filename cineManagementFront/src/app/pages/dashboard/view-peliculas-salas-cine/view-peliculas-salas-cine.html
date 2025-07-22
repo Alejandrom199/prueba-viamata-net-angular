@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  @if (isLoading) {
+    <div class="loading-spinner">
+      <p>Cargando programaciones...</p>
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="error-message">
+      {{ errorMessage }}
+      <button (click)="obtenerPeliculasSalaCine()">Reintentar</button>
+    </div>
+  }
+
+  @if (!isLoading && !errorMessage) {
+    <div class="programaciones-grid">
+      @for (programacion of programaciones; track programacion.peliculaSalaCineId) {
+        <app-pelicula-sala-card [programacion]="programacion"></app-pelicula-sala-card>
+      }
+      @empty {
+        <div class="empty-state">
+          <p>No se encontraron programaciones disponibles</p>
+        </div>
+      }
+    </div>
+  }
+</div>

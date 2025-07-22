@@ -1,0 +1,27 @@
+<div class="pelicula-card">
+  @if (pelicula.imagen) {
+    <div class="card-image">
+      <img [src]="pelicula.imagen" [alt]="pelicula.nombre">
+    </div>
+  }
+
+
+  <div class="card-content">
+    <h3 class="card-title">{{ pelicula.nombre }}</h3>
+
+    @if (pelicula.descripcion) {
+      <p class="card-description">
+        {{ pelicula.descripcion }}
+      </p>
+    }
+
+
+    @if (pelicula.duracion) {
+      <div class="card-duration" >
+        <span class="duration-label">Duración:</span>
+        <span class="duration-value">{{ duracionFormateada }}</span>
+      </div>
+    }
+
+  </div>
+</div>

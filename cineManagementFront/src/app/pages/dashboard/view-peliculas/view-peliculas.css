@@ -1,0 +1,47 @@
+/* Contenedor principal */
+.peliculas-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Grid de películas usando Flexbox */
+.peliculas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Estilo para cada tarjeta individual */
+.pelicula-card-item {
+  flex: 0 0 calc(25% - 20px); /* 4 tarjetas por fila con gap incluido */
+  min-width: 250px; /* Ancho mínimo para responsividad */
+  box-sizing: border-box;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 1024px) {
+  .pelicula-card-item {
+    flex: 0 0 calc(33.333% - 20px); /* 3 tarjetas por fila */
+  }
+}
+
+@media (max-width: 768px) {
+  .pelicula-card-item {
+    flex: 0 0 calc(50% - 20px); /* 2 tarjetas por fila */
+  }
+}
+
+@media (max-width: 480px) {
+  .pelicula-card-item {
+    flex: 0 0 100%; /* 1 tarjeta por fila */
+  }
+}

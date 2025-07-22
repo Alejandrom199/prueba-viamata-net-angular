@@ -1,0 +1,17 @@
+<div class="sala-card {{estadoClase}}">
+  <div class="card-header">
+    <h3 class="card-title">{{ sala.nombre }}</h3>
+    <span class="badge">{{ estadoTexto }}</span>
+  </div>
+
+  <div class="card-content">
+    <div class="sala-info">
+      <p class="info-text">ID: {{ sala.salaId }}</p>
+    </div>
+
+    <div class="sala-status">
+      <span class="status-indicator"></span>
+      <span class="status-text">Estado actual: {{ estadoTexto }}</span>
+    </div>
+  </div>
+</div>

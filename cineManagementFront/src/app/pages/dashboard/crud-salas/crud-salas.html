@@ -1,0 +1,105 @@
+<body class="bg-slate-50">
+<form [formGroup]="form" class=" w-full bg-slate-50 ocultar" (submit)="onSubmit()">
+  <div class="container-title">
+    <h3 class="text-black font-bold">{{title}}</h3>
+  </div>
+
+  <div class="flex gap-2 mt-6 mb-6">
+    <button mat-raised-button class="btn" color="accent" [routerLink]="['/dashboard/asignar-peliculas-salas-cine']">
+      + Asignar Peliculas a Salas de Cine
+    </button>
+  </div>
+
+  <!-- Nombre -->
+  <mat-form-field appearance="outline" class="formElement mr-2">
+    <mat-label class="text-black">Nombre de Sala de Cine:</mat-label>
+    <input matInput type="text" placeholder="Ej: Sala X" formControlName="nombreSalaCine">
+    <mat-error>
+      @if(form.get('nombreSalaCine')?.invalid && form.get('nombreSalaCine')?.dirty || form.get('nombreSalaCine')?.touched){
+        @if(form.get('nombreSalaCine')?.errors?.['required']){
+          <span>Nombre de Sala de Cine es requerido.</span>
+        }
+        @else if (form.get('nombreSalaCine')?.errors?.['minlength']) {
+          <span>Nombre de Sala de Cine requiere mínimo 3 carácteres.</span>
+        }
+        @else if (form.get('nombreSalaCine')?.errors?.['maxlength']) {
+          <span>Nombre de Sala de Cine requiere máximo 50 carácteres.</span>
+        }
+        @else if (form.get('nombreSalaCine')?.errors?.['pattern']) {
+          <span>Nombre de Sala de Cine requiere carácteres no especiales.</span>
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="formElement mr-2">
+    <mat-label class="text-black">Estado:</mat-label>
+    <input matInput type="number" placeholder="Ej: 124" formControlName="estado" min="1" max="999">
+    <mat-error>
+      @if(form.get('estado')?.invalid && form.get('estado')?.dirty || form.get('estado')?.touched){
+        @if(form.get('estado')?.errors?.['required']){
+              <span>Duración es requerida.</span>
+        }
+        @else if (form.get('estado')?.errors?.['pattern']) {
+          <span>Debe ser un número válido.</span>
+        }
+        @else if (form.get('estado')?.errors?.['min']) {
+          <span>Mínimo 1 minuto.</span>
+        }
+        @else if (form.get('estado')?.errors?.['max']) {
+          <span>Máximo 2 minutos.</span>
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+
+  <div class="flex gap-2">
+    <button mat-raised-button class="btn" color="accent" type="submit">Guardar</button>
+    <button mat-raised-button class="btn" color="warn" type="reset" (click)="clearForm()">Cancelar</button>
+  </div>
+
+  <div class="w-full h-0.5 bg-neutral-600 mt-4"></div>
+</form>
+
+<!-- ------------------------------------------------------------------------------------- -->
+<!-- Buscador -->
+<!--<div class="search-container">
+  <mat-form-field appearance="outline" class="mr-5 ml-5">
+    <mat-label class="text-black">Buscar:</mat-label>
+    <input matInput type="search" placeholder="nombre de Película" #searchInput (keyup)="search(searchInput)">
+  </mat-form-field>
+  <button mat-raised-button class="btn" color="primary" (click)="search(searchInput)">Buscar</button>
+</div>-->
+
+<!-- ------------------------------------------------------------------------------------- -->
+<!-- Tabla para mostrar peliculas -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef class="text-black">Nombre</th>
+    <td mat-cell *matCellDef="let salaCine" class="text-black">{{salaCine.nombre}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef class="text-black">Estado</th>
+    <td mat-cell *matCellDef="let salaCine" class="text-black">{{salaCine.estado === 1 ? 'Disponible' : 'No Disponible'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="text-black ">Acciones</th>
+    <td mat-cell *matCellDef="let pelicula">
+      <button class="btn" mat-raised-button color="accent" (click)="editar(pelicula)">Editar</button>
+      <button class="btn" mat-raised-button color="warn" (click)="eliminar(pelicula)">Eliminar</button>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row, columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator  [pageSizeOptions]="[5,10,100]" arial-label="Select page" showFirstLastButtons></mat-paginator>
+
+</body>

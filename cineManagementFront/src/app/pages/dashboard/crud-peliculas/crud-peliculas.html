@@ -1,0 +1,128 @@
+<body class="bg-slate-50">
+<form [formGroup]="form" class=" w-full bg-slate-50 ocultar" (submit)="onSubmit()">
+  <div class="container-title mb-6">
+    <h3 class="text-black font-bold">{{title}}</h3>
+  </div>
+
+  <!-- Nombre -->
+  <mat-form-field appearance="outline" class="formElement mr-2">
+    <mat-label class="text-black">Nombre de Película:</mat-label>
+    <input matInput type="text" placeholder="Ej: La aventura de ..." formControlName="nombrePelicula">
+    <mat-error>
+      @if(form.get('nombrePelicula')?.invalid && form.get('nombrePelicula')?.dirty || form.get('nombrePelicula')?.touched){
+        @if(form.get('nombrePelicula')?.errors?.['required']){
+          <span>Nombre de Película es requerido.</span>
+        }
+        @else if (form.get('nombrePelicula')?.errors?.['minlength']) {
+          <span>Nombre de Película requiere mínimo 3 carácteres.</span>
+        }
+        @else if (form.get('nombrePelicula')?.errors?.['maxlength']) {
+          <span>Nombre de Película requiere máximo 50 carácteres.</span>
+        }
+        @else if (form.get('nombrePelicula')?.errors?.['pattern']) {
+          <span>Nombre de Película requiere carácteres no especiales.</span>
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="formElement mr-2">
+    <mat-label class="text-black">Descripción:</mat-label>
+    <input matInput type="text" placeholder="Ej: Es la historia de ..." formControlName="descripcion">
+    <mat-error>
+      @if(form.get('descripcion')?.invalid && form.get('descripcion')?.dirty || form.get('descripcion')?.touched){
+
+      }
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="formElement mr-2">
+    <mat-label class="text-black">Duración(minutos):</mat-label>
+    <input matInput type="number" placeholder="Ej: 124" formControlName="duracion" min="1" max="999">
+    <mat-error>
+      @if(form.get('duracion')?.invalid && form.get('duracion')?.dirty || form.get('duracion')?.touched){
+        @if(form.get('duracion')?.errors?.['required']){
+              <span>Duración es requerida.</span>
+        }
+        @else if (form.get('duracion')?.errors?.['pattern']) {
+          <span>Debe ser un número válido.</span>
+        }
+        @else if (form.get('duracion')?.errors?.['min']) {
+          <span>Mínimo 1 minuto.</span>
+        }
+        @else if (form.get('duracion')?.errors?.['max']) {
+          <span>Máximo 999 minutos.</span>
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="formElement mr-2">
+    <mat-label class="text-black">Imagen URL:</mat-label>
+    <input matInput type="text" placeholder="http://mipagina/img.png" formControlName="imagen">
+    <mat-error>
+      @if(form.get('imagen')?.invalid && form.get('imagen')?.dirty || form.get('imagen')?.touched){
+        @if(form.get('imagen')?.errors?.['required']){
+          <span>URL de imagen es requerida.</span>
+        }
+        @else if (form.get('imagen')?.errors?.['pattern']) {
+          <span>Debe ser una URL válida (http:// o https://).</span>
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+
+  <div class="flex gap-2">
+    <button mat-raised-button class="btn" color="accent" type="submit">Guardar</button>
+    <button mat-raised-button class="btn" color="warn" type="reset" (click)="clearForm()">Cancelar</button>
+  </div>
+
+  <div class="w-full h-0.5 bg-neutral-600 mt-4 mb-4"></div>
+</form>
+
+<!-- ------------------------------------------------------------------------------------- -->
+<!-- Buscador -->
+<div class="search-container">
+  <mat-form-field appearance="outline" class="mr-5 ml-5">
+    <mat-label class="text-black">Buscar:</mat-label>
+    <input matInput type="search" placeholder="nombre de Película" #searchInput (keyup)="search(searchInput)">
+  </mat-form-field>
+  <button mat-raised-button class="btn" color="primary" (click)="search(searchInput)">Buscar</button>
+</div>
+
+<!-- ------------------------------------------------------------------------------------- -->
+<!-- Tabla para mostrar peliculas -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef class="text-black">Nombre</th>
+    <td mat-cell *matCellDef="let pelicula" class="text-black">{{pelicula.nombre}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef class="text-black">Descripción</th>
+    <td mat-cell *matCellDef="let pelicula" class="text-black">{{pelicula.descripcion}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="duracion">
+    <th mat-header-cell *matHeaderCellDef class="text-black">Duración</th>
+    <td mat-cell *matCellDef="let pelicula" class="text-black">{{pelicula.duracion}} min</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="text-black ">Acciones</th>
+    <td mat-cell *matCellDef="let pelicula">
+      <button class="btn" mat-raised-button color="accent" (click)="editar(pelicula)">Editar</button>
+      <button class="btn" mat-raised-button color="warn" (click)="eliminar(pelicula)">Eliminar</button>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row, columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator  [pageSizeOptions]="[5,10,100]" arial-label="Select page" showFirstLastButtons></mat-paginator>
+
+</body>

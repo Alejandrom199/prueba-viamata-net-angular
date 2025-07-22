@@ -1,0 +1,53 @@
+<div class="programacion-card">
+  <!-- Sección de la Película -->
+  @if (pelicula) {
+    <div class="pelicula-section">
+      @if (pelicula.imagen) {
+        <div class="pelicula-image">
+          <img [src]="pelicula.imagen" [alt]="pelicula.nombre">
+        </div>
+      } @else {
+        <div class="pelicula-image placeholder">
+          <span>Sin imagen</span>
+        </div>
+      }
+
+      <div class="pelicula-info">
+        <h3 class="pelicula-title">{{ pelicula.nombre || 'Película no disponible' }}</h3>
+        @if (pelicula.descripcion) {
+          <p class="pelicula-description">
+            {{ pelicula.descripcion | truncate:100 }}
+          </p>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- Sección de la Sala -->
+  @if (sala) {
+    <div class="sala-section">
+      <div class="sala-info">
+        <h4 class="sala-title">Sala {{ sala.nombre || programacion.salaId }}</h4>
+        <p class="sala-status">Estado: {{ sala.estado | estadoSala }}</p>
+      </div>
+    </div>
+  }
+
+  <!-- Sección de Programación -->
+  <div class="programacion-section">
+    <div class="date-range">
+      <div class="date-item">
+        <span class="date-label">Publicación:</span>
+        <span class="date-value">{{ programacion.fechaPublicacion | date:'dd/MM/yyyy HH:mm' }}</span>
+      </div>
+      <div class="date-item">
+        <span class="date-label">Fin:</span>
+        <span class="date-value">{{ programacion.fechaFin | date:'dd/MM/yyyy HH:mm' }}</span>
+      </div>
+      <div class="date-item">
+        <span class="date-label">Duración:</span>
+        <span class="date-value">{{ duracionCartelera }}</span>
+      </div>
+    </div>
+  </div>
+</div>

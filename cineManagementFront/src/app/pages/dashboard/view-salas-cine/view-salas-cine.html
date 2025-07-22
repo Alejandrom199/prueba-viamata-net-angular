@@ -1,0 +1,9 @@
+<div class="salas-container">
+  <h1 class="page-title">{{ title }}</h1>
+
+  <div class="salas-grid">
+    @for (sala of salas; track sala.salaId) {
+      <app-sala-card [sala]="sala" class="sala-card-item"></app-sala-card>
+    }
+  </div>
+</div>
