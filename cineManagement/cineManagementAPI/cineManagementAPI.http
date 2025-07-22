@@ -1,0 +1,6 @@
+@cineManagementAPI_HostAddress = http://localhost:5145
+
+GET {{cineManagementAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

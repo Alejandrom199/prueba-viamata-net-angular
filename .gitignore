@@ -1,0 +1,15 @@
+# Backend (.NET)
+bin/
+obj/
+.vs/
+appsettings.Development.json
+
+# Frontend (Angular)
+node_modules/
+dist/
+.angular/cache
+
+# General
+*.log
+*.sqlite
+.env

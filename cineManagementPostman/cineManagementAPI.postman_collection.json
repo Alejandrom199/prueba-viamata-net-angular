@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "ce0ef5ea-f704-4518-b587-183dfdc2ed1b",
+		"name": "cineManagementAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33144877"
+	},
+	"item": [
+		{
+			"name": "peliculas",
+			"item": [
+				{
+					"name": "Obtener película por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear nueva película",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Avengers: Endgame\",\r\n    \"descripcion\": \"Película de superhéroes\",\r\n    \"duracion\": 181,\r\n    \"imagen\": \"https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Avenger_Endgame_Poster_Oficial.png/revision/latest/scale-to-width-down/1200?cb=20190326185910&path-prefix=es\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar película",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"peliculaId\": 1,\r\n    \"nombre\": \"Oppenheimer\",\r\n    \"descripcion\": \"La historia del científico que desarrolló la bomba atómica.\",\r\n    \"duracion\": 180,\r\n    \"imagen\": \"https://m.media-amazon.com/images/M/MV5BNTFlZDI1YWQtMTVjNy00YWU1LTg2YjktMTlhYmRiYzQ3NTVhXkEyXkFqcGc@._V1_.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todas las películas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desactivar película",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas/desactivar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas",
+								"desactivar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar película",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener películas por fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas/por-fecha/2023-12-15T10:00:00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas",
+								"por-fecha",
+								"2023-12-15T10:00:00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar película por nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/peliculas/buscar/Avengers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"peliculas",
+								"buscar",
+								"Avengers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sala_cine",
+			"item": [
+				{
+					"name": "Obtener todas las salas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener sala por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear nueva sala",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sala 3D\",\r\n    \"estado\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar sala",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"salaId\": 1,\r\n    \"nombre\": \"Sala VIP Actualizada\",\r\n    \"estado\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desactivar sala",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine/desactivar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine",
+								"desactivar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar sala",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estado por nombre de sala",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine/estado/Sala%203D",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine",
+								"estado",
+								"Sala%203D"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener datos del dashboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/sala_cine/dashboard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"sala_cine",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "peliculas_sala_cine",
+			"item": [
+				{
+					"name": "Obtener todas las relaciones película-sala",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener relación por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear nueva relación película-sala",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"peliculaId\": 2,\r\n    \"salaId\": 2,\r\n    \"fechaPublicacion\": \"2024-05-06T10:00:00\",\r\n    \"fechaFin\": \"2024-05-29T22:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar relación",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"peliculaSalaCineId\": 1,\r\n    \"peliculaId\": 1,\r\n    \"salaId\": 1,\r\n    \"fechaPublicacion\": \"2023-05-01T10:00:00\",\r\n    \"fechaFin\": \"2023-05-20T22:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar relación",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener relaciones por sala",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine/por-sala/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine",
+								"por-sala",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener relaciones por película",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine/por-pelicula/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine",
+								"por-pelicula",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verificar disponibilidad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/api/PeliculasSalasCine/disponibilidad?salaId=1&inicio=2023-05-01T10:00:00&fin=2023-05-02T22:00:00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"api",
+								"PeliculasSalasCine",
+								"disponibilidad"
+							],
+							"query": [
+								{
+									"key": "salaId",
+									"value": "1"
+								},
+								{
+									"key": "inicio",
+									"value": "2023-05-01T10:00:00"
+								},
+								{
+									"key": "fin",
+									"value": "2023-05-02T22:00:00"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
